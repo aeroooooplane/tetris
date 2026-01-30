@@ -1,0 +1,180 @@
+:root{
+  --bg0:#0b1020;
+  --bg1:#0f1730;
+  --card:#111a36;
+  --card2:#0f1833;
+  --text:#e9eeff;
+  --muted:#a8b3d9;
+  --border:rgba(255,255,255,.10);
+  --shadow: 0 18px 50px rgba(0,0,0,.35);
+  --accent:#6ea8fe;
+  --accent2:#7cf0c5;
+  --danger:#ff6b6b;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 20% 20%, rgba(110,168,254,.22), transparent 60%),
+    radial-gradient(900px 700px at 80% 10%, rgba(124,240,197,.18), transparent 55%),
+    radial-gradient(1000px 900px at 50% 100%, rgba(255,107,107,.10), transparent 60%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+}
+
+.app{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  background: rgba(17,26,54,.55);
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.brand{display:flex; align-items:center; gap:12px;}
+.logo{
+  width:40px; height:40px; border-radius:12px;
+  display:grid; place-items:center;
+  background: linear-gradient(135deg, rgba(110,168,254,.95), rgba(124,240,197,.85));
+  color:#051025;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+.title{font-weight:800; font-size:16px; line-height:1.1;}
+.subtitle{font-size:12px; color:var(--muted); margin-top:2px}
+
+.actions{display:flex; gap:10px; flex-wrap:wrap}
+.btn{
+  appearance:none;
+  border:1px solid var(--border);
+  background: rgba(15,24,51,.65);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius: 12px;
+  cursor:pointer;
+  transition: transform .05s ease, background .2s ease, border-color .2s ease;
+  font-weight:700;
+}
+.btn:hover{background: rgba(15,24,51,.9); border-color: rgba(255,255,255,.18)}
+.btn:active{transform: translateY(1px)}
+.btnPrimary{
+  border-color: rgba(110,168,254,.45);
+  background: linear-gradient(135deg, rgba(110,168,254,.35), rgba(124,240,197,.18));
+}
+
+.panel{
+  display:grid;
+  grid-template-columns: 1fr 280px;
+  gap:14px;
+  align-items:start;
+}
+
+.stage{
+  position:relative;
+  border-radius: 18px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.18);
+  box-shadow: var(--shadow);
+}
+
+canvas#game{
+  display:block;
+  width:100%;
+  height:auto;
+  background:
+    radial-gradient(900px 650px at 40% 10%, rgba(110,168,254,.18), transparent 60%),
+    radial-gradient(800px 600px at 70% 80%, rgba(124,240,197,.12), transparent 55%),
+    linear-gradient(180deg, rgba(5,10,22,.78), rgba(6,10,20,.92));
+}
+
+.overlay{
+  position:absolute; inset:0;
+  background: rgba(3,6,15,.55);
+  backdrop-filter: blur(6px);
+}
+.overlay:not([hidden]){
+  display:grid;
+  place-items:center;
+}
+.overlayCard{
+  width:min(340px, 88%);
+  border:1px solid var(--border);
+  background: rgba(17,26,54,.75);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.overlayTitle{font-size:18px; font-weight:900; margin-bottom:6px}
+.overlayHint{font-size:13px; color:var(--muted); margin-bottom:12px}
+.overlayButtons{display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap}
+
+.sidebar{display:flex; flex-direction:column; gap:14px}
+.card{
+  border:1px solid var(--border);
+  background: rgba(17,26,54,.55);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+.cardTitle{font-weight:900; margin-bottom:10px}
+.kv{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:10px 12px;
+  align-items:center;
+  font-size: 14px;
+}
+.k{color:var(--muted)}
+.v{font-variant-numeric: tabular-nums; font-weight:900}
+
+canvas#next{
+  display:block;
+  width:100%;
+  height:auto;
+  background: rgba(0,0,0,.18);
+  border:1px solid var(--border);
+  border-radius: 14px;
+}
+
+.help{
+  margin:0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 13px;
+}
+.help b{color: var(--text)}
+.tip{
+  margin-top:10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer{
+  text-align:center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 6px 0;
+}
+
+@media (max-width: 860px){
+  .panel{grid-template-columns: 1fr}
+}

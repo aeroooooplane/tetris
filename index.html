@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>俄罗斯方块（Tetris）</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">T</div>
+          <div>
+            <div class="title">俄罗斯方块</div>
+            <div class="subtitle">原生 JavaScript + Canvas</div>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="btnPause" class="btn" type="button">暂停 (P)</button>
+          <button id="btnRestart" class="btn btnPrimary" type="button">重开 (R)</button>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="stage">
+          <canvas id="game" width="360" height="720" aria-label="游戏画面"></canvas>
+          <div id="overlay" class="overlay" hidden>
+            <div class="overlayCard">
+              <div id="overlayTitle" class="overlayTitle">暂停</div>
+              <div id="overlayHint" class="overlayHint">按 P 继续</div>
+              <div class="overlayButtons">
+                <button id="btnOverlayResume" class="btn btnPrimary" type="button">继续</button>
+                <button id="btnOverlayRestart" class="btn" type="button">重开</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <div class="card">
+            <div class="cardTitle">信息</div>
+            <div class="kv">
+              <div class="k">分数</div>
+              <div class="v" id="score">0</div>
+              <div class="k">等级</div>
+              <div class="v" id="level">1</div>
+              <div class="k">已消行</div>
+              <div class="v" id="lines">0</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="cardTitle">下一个</div>
+            <canvas id="next" width="160" height="160" aria-label="下一个方块预览"></canvas>
+          </div>
+
+          <div class="card">
+            <div class="cardTitle">操作</div>
+            <ul class="help">
+              <li><b>←/→</b> 左右移动</li>
+              <li><b>↓</b> 加速下落（按住）</li>
+              <li><b>↑</b> 旋转</li>
+              <li><b>Space</b> 瞬间落地</li>
+              <li><b>P</b> 暂停/继续</li>
+              <li><b>R</b> 重开</li>
+            </ul>
+            <div class="tip">提示：旋转带简单“踢墙”修正，靠墙也更容易转过去。</div>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="footer">
+        <span>离线可玩，无需安装依赖。</span>
+      </footer>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
