@@ -40,7 +40,11 @@ python -m http.server 5173
 
 ## 文件结构
 
-- `index.html`：页面与 UI
-- `style.css`：样式
-- `main.js`：游戏逻辑
+| 文件 | 用途 | 改外观/逻辑时 |
+|-----|------|-------------|
+| `index.html` | 页面结构 | 增删按钮、文字等 |
+| `style.css` | 外观样式 | **改颜色、布局、字体等** |
+| `main.js` | 游戏逻辑 | 改玩法、计分、按键等 |
+
+协作开发详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 

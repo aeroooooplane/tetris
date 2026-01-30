@@ -18,6 +18,14 @@
   const btnRestart = document.getElementById('btnRestart');
   const btnOverlayResume = document.getElementById('btnOverlayResume');
   const btnOverlayRestart = document.getElementById('btnOverlayRestart');
+  const speedSlider = document.getElementById('speedSlider');
+
+  // 速度滑轨：0=慢 50=默认 100=快，返回下落间隔的倍率
+  function getSpeedIntervalMultiplier() {
+    const val = Number(speedSlider?.value ?? 50);
+    if (val <= 50) return 1 + (50 - val) / 50;
+    return 1 - 0.65 * (val - 50) / 50;
+  }
 
   // Board config
   const COLS = 10;
@@ -434,7 +442,8 @@
     state.lastTime = now;
 
     if (state.running && !state.gameOver) {
-      const interval = state.softDropping ? 40 : state.dropIntervalMs;
+      const baseInterval = state.softDropping ? 40 : state.dropIntervalMs;
+      const interval = baseInterval * getSpeedIntervalMultiplier();
       state.dropAcc += dt;
       while (state.dropAcc >= interval) {
         state.dropAcc -= interval;
